@@ -12,13 +12,20 @@ export default defineConfig({
             // Modules to expose
             exposes: {
                 './RemoteAuth': './src/RemoteAuth.vue',
+                './remoteStore' : './src/store.ts'
             },
-            shared: ['vue']
+            shared: {
+                vue:{},
+                pinia:{}
+            }
         })
     ],
     base: 'http://localhost:5001',
     build: {
+        target:'esnext',
         minify: false,
-        target: ["chrome89", "edge89", "firefox89", "safari15"]
+       // target: ["chrome89", "edge89", "firefox89", "safari15"],
+        cssCodeSplit: false,
+        sourcemap: true,
     }
 })
